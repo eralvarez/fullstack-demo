@@ -15,7 +15,7 @@ docker-compose up -d
 Webapi is running at http://localhost:4201/
 
 | Endpoint | Method | Returns | Description |
-|---|---|---|---|---|
+|---|---|---|---|
 | `/api/v1/parts` | `GET` | Array of IParts | Retrieve all parts |
 | `/api/v1/health-check` | `GET` | Webapi server status | Get server status |
 | `/api/v1/parts` | `POST` | `n/a` | Create parts (items) |
