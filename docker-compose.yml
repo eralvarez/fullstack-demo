@@ -1,0 +1,50 @@
+version: '3'
+
+volumes:
+  mssqlsystem:
+    driver: local
+  mssqluser:
+    driver: local
+  sqlserver:
+    driver: local
+
+services:
+  client:
+    build: 
+      context: ./client
+    restart: always
+    ports:
+      - "4200:4200"
+    depends_on:
+      - webapi
+
+  webapi:
+    build: 
+      context: ./webapi
+    restart: always
+    ports:
+      - "4201:4201"
+    environment: 
+      - NODE_ENV=development
+      - SERVER_PORT=4201
+      - DB_HOST=sqlserver
+      - DB_SCHEMA=master
+      - DB_USER=sa
+      - DB_PASSWORD=p@ssw0rd!
+      - DB_PORT=1433
+      - DB_DIALECT=mssql
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu 
+    restart: always
+    environment:
+      - ACCEPT_EULA=YES
+      - SA_PASSWORD=p@ssw0rd!
+      - MSSQL_PID=Express
+    volumes:
+      - mssqlsystem:/var/opt/mssql
+      - mssqluser:/var/opt/sqlserver
+    # ports:
+    #   - "1433:1433"

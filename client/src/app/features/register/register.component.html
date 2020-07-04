@@ -1,0 +1,25 @@
+<div class="register-container">
+    <mat-card class="mat-elevation-z4 card">
+        <form [formGroup]="urlForm" (ngSubmit)="urlFormSubmit()">
+
+            <mat-form-field class="webapiurl">
+                <mat-label>Webapi Url</mat-label>
+                <input matInput formControlName="webapiUrl">
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" [disabled]="!urlForm.valid" type="submit">Search data</button>
+        </form>
+    </mat-card>
+    
+    <mat-card class="mat-elevation-z4 card">
+        <form [formGroup]="registerForm" (ngSubmit)="registerFormSubmit()">
+            <h2>To sumulate an error, set any item "category" a value of 20</h2>
+            <mat-form-field class="partsjson" appearance="fill">
+                <mat-label>Textarea</mat-label>
+                <textarea matInput formControlName="partsJson"></textarea>
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" [disabled]="!registerForm.valid" type="submit">Save Parts</button>
+        </form>
+    </mat-card>
+</div>
