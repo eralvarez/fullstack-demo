@@ -10,6 +10,14 @@ Angular 9, NodeJS (ExpressJS) & SQL Server
 docker-compose up -d
 ```
 
+## Client
+
+Client is running at http://localhost:4200/
+
+Pages:
+- http://localhost:4200/dashboard
+- http://localhost:4200/register
+
 ## Webapi endpoints
 
 Webapi is running at http://localhost:4201/
